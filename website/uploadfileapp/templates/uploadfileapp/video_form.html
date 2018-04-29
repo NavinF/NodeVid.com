@@ -1,0 +1,52 @@
+<html>
+<head>
+
+</head>
+
+
+    <style>
+        body{
+            background-color: #2b542c;
+        }
+
+        h1{
+              color: white;
+              background-color:#4cae4c;
+              width: 100%;
+              float:left;
+              height: 50px;
+        }
+
+        button{
+            width: auto;
+            height: 40px;
+            text-align: center;
+            background-color: #1b6d85;
+            color: #ffffff;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+
+
+<body >
+
+<h1>Add a new Video</h1>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'uploadfileapp/form-template.html' %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+
+</html>
