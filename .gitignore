@@ -151,3 +151,5 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+/atube/db.sqlite3
