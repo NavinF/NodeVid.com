@@ -1,7 +1,7 @@
 from django.db import models
 import subprocess
 from threading import Thread
-import os
+import os, time
 
 # Create your models here.
 from django.urls import reverse
@@ -20,9 +20,13 @@ class Video(models.Model):
 
     def save(self):
         def helper(self):
-            self.magnet_uri = subprocess.run(['sudo', 'docker', 'run', '-d', '-it', '--net=host', '-v', os.getcwd()+':/srv/webtorrent', '2cc2a9146aaf'])
+            p = subprocess.Popen(['sudo', 'docker', 'run', '--net=host', '-v', os.getcwd()+':/srv/webtorrent', '2cc2a9146aaf',],stdout=subprocess.PIPE)
+            while True:
+                nextline = p.stdout.read(1)
+                print(nextline,'  hell')
+
 
         thread = Thread(target = helper, args=(self,))
         thread.start()
-        
+
         return super(Video, self).save()
