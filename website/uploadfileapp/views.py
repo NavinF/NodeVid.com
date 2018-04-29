@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from uploadfileapp.models import Video
 
 
+
 class HomeView(generic.ListView):
     # name of the object to be used in the index.html
     context_object_name = 'video_list'
@@ -20,6 +21,8 @@ class HomeView(generic.ListView):
 class VideoEntry(CreateView):
     model = Video
     fields = ['video_name', 'video_file']
+
+
 
 def watch(request, magnet_uri):
     video = get_object_or_404(Video, pk=magnet_uri)
