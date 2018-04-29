@@ -151,3 +151,8 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+.idea/markdown-exported-files.xml
+
+db.sqlite3
+mysite/files/
