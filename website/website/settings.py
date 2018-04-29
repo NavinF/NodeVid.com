@@ -25,7 +25,7 @@ SECRET_KEY = '3+r#pc6i8_$@520q@$-+ccwrn*o!2cg9ifxanxdi&16st^766j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['atube.altiora.us','127.0.0.1']
+ALLOWED_HOSTS = ['atube.altiora.us','127.0.0.1','nodevid.com']
 
 
 # Application definition
