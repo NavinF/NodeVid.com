@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'^$', views.HomeView.as_view(),name='home' ),
 
     # uploadifileapp/register
-    url(r'^register/$', views.VideoEntry.as_view(), name='video-entry'),
+    url(r'^upload/$', views.VideoEntry.as_view(), name='video-entry'),
+
+    url(r'^v/(?P<magnet_uri>[\w\-]+)/$', views.watch, name='video-watch')
 
 ]
