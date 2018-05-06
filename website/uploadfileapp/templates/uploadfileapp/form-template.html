@@ -1,6 +1,4 @@
 {% for field in form %}
-    <div class="form-group">
-        <label style="font-size: 20px;color: white; " >{{ field.label_tag }}</label>
+        <label>{{ field.label_tag }}</label>
         <div class="input" >{{ field }}</div>
-    </div>
 {% endfor %}

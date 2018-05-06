@@ -1,78 +1,58 @@
-<html>
-<head>
-<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-<title class="title" >
-
-</title>
-
-    <style>
-        body{
-            background-color: #2b542c;
-        }
-
-        h1{
-              color: white;
-              background-color:#4cae4c;
-              width: 100%;
-              float:left;
-              height: 50px;
-        }
-
-        button{
-            width: auto;
-            height: 60px;
-            text-align: center;
-            background-color: #1b6d85;
-            color: #ffffff;
-            font-size: 35px;
-        }
-
-        img{
-            width: 200px;
-            height: 150px;
-
-        }
-    </style>
-
-
-</head>
-
-<body>
+{% extends "uploadfileapp/base.html" %}
+{% block content %}
 <h1>NodeVid</h1>
 <div id="hero">
-      <div id="output">
+    <div id="output">
         <div id="progressBar"></div>
         <!-- The video player will be added here -->
-      </div>
-      <!-- Statistics -->
-      <div id="status">
-        <div>
-          <span class="show-leech">Downloading </span>
-          <span class="show-seed">Seeding </span>
-          <code>
-            <!-- Informative link to the torrent file -->
-            <a id="torrentLink" href="https://webtorrent.io/torrents/sintel.torrent">sintel.torrent</a>
-          </code>
-          <span class="show-leech"> from </span>
-          <span class="show-seed"> to </span>
-          <code id="numPeers">0 peers</code>.
-        </div>
-        <div>
-          <code id="downloaded"></code>
-          of <code id="total"></code>
-          — <span id="remaining"></span><br/>
-          &#x2198;<code id="downloadSpeed">0 b/s</code>
-          / &#x2197;<code id="uploadSpeed">0 b/s</code>
-        </div>
-      </div>
     </div>
-    <!-- Include the latest version of WebTorrent -->
-    <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+    <!-- Statistics -->
+    <div id="status">
+        <div>
+            <span class="show-leech">Downloading </span>
+            <span class="show-seed">Seeding </span>
+            <code>
+                <!-- Informative link to the torrent file -->
+                <a id="torrentLink" href="https://webtorrent.io/torrents/sintel.torrent">sintel.torrent</a>
+            </code>
+            <span class="show-leech"> from </span>
+            <span class="show-seed"> to </span>
+            <code id="numPeers">0 peers</code>.
+        </div>
+        <div>
+            <code id="downloaded"></code>
+            of <code id="total"></code>
+            — <span id="remaining"></span><br/>
+            &#x2198;<code id="downloadSpeed">0 b/s</code>
+            / &#x2197;<code id="uploadSpeed">0 b/s</code>
+        </div>
+    </div>
+</div>
+{% if video_list %}
+    {% for video in video_list %}
+    <ul>
 
-    <!-- Moment is used to show a human-readable remaining time -->
-    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+        <li>
 
-    <script>
+            <h2>{{ video.video_name }}</h2>
+            <video width="320" height="240" controls>
+                <source src="{{ video.video_file.url }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+
+        </li>
+
+    </ul>
+    {% endfor %}
+{% else %}
+    <h1 class="textNoVideosfound">No videos found.</h1>
+{% endif %}
+<a href="{% url 'uploadfileapp:video-entry'  %}" class="pure-button"><i class="fas fa-upload"></i> Add a new Video</a>
+<!-- Include the latest version of WebTorrent -->
+<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+<!-- Moment is used to show a human-readable remaining time -->
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
+<script>
       var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
 
       var client = new WebTorrent()
@@ -144,43 +124,5 @@
         unit = units[exponent]
         return (neg ? '-' : '') + num + ' ' + unit
       }
-    </script>
-
-{% if video_list %}
-
-    {% for video in video_list %}
-
-    <ul>
-
-    <li>
-
-        <h2>{{ video.video_name }}</h2>
-        <video width="320" height="240" controls>
-          <source src="{{ video.video_file.url }}" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
-
-    </li>
-
-
-    </ul>
-
-
-{% endfor %}
-
-    {% else %}
-    <h1 class="textNoVideosfound" >No videos found.</h1>
-
-{% endif %}
-
-
-
-     <form action="{% url 'uploadfileapp:video-entry'  %}" method="post" style="display: inline;"
-     >
-            {% csrf_token %}
-            <button   type="submit">Add a new Video</button>
-        </form>
-
-
-</body>
-</html>
+</script>
+{% endblock %}

@@ -1,52 +1,9 @@
-<html>
-<head>
-<title class="title" >
-
-</title>
-
-    <style>
-        body{
-            background-color: #2b542c;
-        }
-
-        h1{
-              color: white;
-              background-color:#4cae4c;
-              width: 100%;
-              float:left;
-              height: 50px;
-        }
-
-        button{
-            width: auto;
-            height: 60px;
-            text-align: center;
-            background-color: #1b6d85;
-            color: #ffffff;
-            font-size: 35px;
-        }
-
-        img{
-            width: 200px;
-            height: 150px;
-
-        }
-    </style>
-
-
-</head>
-
-<body >
-
+{% extends "uploadfileapp/base.html" %}
+{% block content %}
 <h1> {{ video.magnet_uri }} </h1>
 
 <video width="320" height="240" controls>
   <source src="{{ video.video_file.url }}" type="video/webm">
   Your browser does not support the video tag.
 </video>
-
-
-
-
-</body>
-</html>
+{% endblock %}
