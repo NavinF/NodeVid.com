@@ -30,12 +30,12 @@ def keyframes():
         os.mkdir('static/' + filename)
         ff = ffmpy.FFmpeg(
         inputs={filename:  '-skip_frame nokey'},
-        outputs={'static/' + filename + '/thumbnails-%02d.jpeg': '-vsync 0 -r 30 -f image2'} 
+        outputs={'static/' + filename + '/thumbnails-%09d.jpeg': '-vsync 0 -r 30 -f image2'}
         )
         ff.run()    
 
-    return send_file('static/' + filename + '/thumbnails-%s.jpeg' % (frame))
+    return send_file('static/' + filename + '/thumbnails-%09d.jpeg' % int(frame))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='::')
 
