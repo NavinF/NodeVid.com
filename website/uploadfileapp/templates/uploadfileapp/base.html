@@ -9,6 +9,20 @@
           integrity="sha384-b92sF+wDNTHrfEtRaYo+EpcA8FUyHOSXrdxKc9XB9kaaX1rSQAgMevW6cYeE5Bdv" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
           integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <style>
+        body{
+            margin:1em auto;
+            max-width:65em;
+        }
+        h1,h2,h3 {
+            line-height:1.2;
+        }
+        @media print{
+            body{
+                max-width:none
+            }
+        }
+    </style>
 </head>
 <body>
 {% block content %}{% endblock %}
