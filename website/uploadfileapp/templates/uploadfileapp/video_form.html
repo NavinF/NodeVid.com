@@ -5,7 +5,7 @@
 {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
 {% endif %}
-<form action="" method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% include 'uploadfileapp/form-template.html' %}
     <button type="submit" class="pure-button"><i class="fas fa-upload"></i> Submit</button>

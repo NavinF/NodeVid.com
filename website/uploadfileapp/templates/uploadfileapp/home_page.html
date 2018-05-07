@@ -1,6 +1,8 @@
 {% extends "uploadfileapp/base.html" %}
 {% block content %}
-<h1>NodeVid</h1>
+<header>
+    <h1>NodeVid</h1>
+</header>
 <div id="hero">
     <div id="output">
         <div id="progressBar"></div>
@@ -48,6 +50,7 @@
     <h1 class="textNoVideosfound">No videos found.</h1>
 {% endif %}
 <a href="{% url 'uploadfileapp:video-entry'  %}" class="pure-button"><i class="fas fa-upload"></i> Add a new Video</a>
+
 <!-- Include the latest version of WebTorrent -->
 <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
 <!-- Moment is used to show a human-readable remaining time -->
