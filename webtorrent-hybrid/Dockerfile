@@ -31,7 +31,7 @@ RUN apt-get install -y libgtk2.0
 RUN apt-get install -y libXtst-dev
 
 # Install webtorrent-hybrid
-RUN git clone --recursive https://github.com/feross/webtorrent-hybrid.git \
+RUN git clone --recursive https://github.com/NavinF/webtorrent-hybrid \
  && cd webtorrent-hybrid \
  && npm install \
  && npm link
