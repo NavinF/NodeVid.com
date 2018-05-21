@@ -40,8 +40,4 @@ RUN git clone --recursive https://github.com/NavinF/webtorrent-hybrid \
 RUN mkdir -p /srv/webtorrent
 WORKDIR /srv/webtorrent
 
-ENTRYPOINT ["webtorrent-hybrid"]
-
-# Default command to run
-# CMD ["bash"]
-CMD ["-q","--verbose","seed","/srv/webtorrent"]
+CMD ["webtorrent-hybrid", "-q","--verbose","seed","/srv/webtorrent"]
