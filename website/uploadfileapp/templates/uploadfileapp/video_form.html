@@ -3,11 +3,23 @@
 <h1>Add a new Video</h1>
 
 {% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
+<p><strong>{{ error_message }}</strong></p>
 {% endif %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% include 'uploadfileapp/form-template.html' %}
+    <p>By uploading, you agree to the <a href="#">Terms of Use</a>, and you irrevocably agree to release your
+        content under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">CC BY License</a>. This
+        license lets others distribute, remix, tweak, and build upon your work as long as they
+        credit you for the original creation. You agree that a hyperlink or URL is
+        sufficient attribution under the Creative Commons license.</p>
+    <p>Please understand that you may only upload content that can be licensed by you under the CC BY license. Some
+        examples of such licensable content are:</p>
+    <ul>
+        <li>Your originally created content</li>
+        <li>Other videos marked with a CC BY license</li>
+        <li>Videos in the public domain</li>
+    </ul>
     <button type="submit" class="pure-button"><i class="fas fa-upload"></i> Submit</button>
 </form>
 {% endblock %}
